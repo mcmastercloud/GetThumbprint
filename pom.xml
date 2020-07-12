@@ -74,4 +74,8 @@
     	<version>2.11.1</version>
     </dependency>
   </dependencies>
+  <properties>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
 </project>
