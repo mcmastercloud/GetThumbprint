@@ -1,9 +1,10 @@
-package com.amazonaws.oidc;
+package com.mcmaster.aws.oidc;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class Thumbprints implements java.io.Serializable {
+public final class Thumbprints implements java.io.Serializable {
 
 	/**
 	 * 
@@ -26,14 +27,9 @@ public class Thumbprints implements java.io.Serializable {
 	 * @return the thumbprints
 	 */
 	public List<Thumbprint> getThumbprints() {
-		return thumbprints;
+		return Collections.unmodifiableList(this.thumbprints);
 	}
-	/**
-	 * @param thumbprints the thumbprints to set
-	 */
-	public void setThumbprints(List<Thumbprint> thumbprints) {
-		this.thumbprints = thumbprints;
-	}
+
 	/**
 	 * @return the last
 	 */

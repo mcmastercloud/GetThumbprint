@@ -1,6 +1,6 @@
-package com.amazonaws.oidc;
+package com.mcmaster.aws.oidc;
 
-public class ThumbprintPayload {
+public final class ThumbprintPayload {
 
 	private String url;
 

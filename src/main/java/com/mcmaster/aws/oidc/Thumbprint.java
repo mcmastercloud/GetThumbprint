@@ -1,6 +1,6 @@
-package com.amazonaws.oidc;
+package com.mcmaster.aws.oidc;
 
-public class Thumbprint implements java.io.Serializable  {
+public final class Thumbprint implements java.io.Serializable  {
 
 	/**
 	 * 

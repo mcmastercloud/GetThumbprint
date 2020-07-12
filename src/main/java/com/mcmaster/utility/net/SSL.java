@@ -1,4 +1,4 @@
-package com.amazonaws.utility.net;
+package com.mcmaster.utility.net;
 
 import java.io.IOException;
 import java.net.URL;
@@ -11,9 +11,9 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.bind.DatatypeConverter;
 
-import com.amazonaws.oidc.Thumbprints;
+import com.mcmaster.aws.oidc.Thumbprints;
 
-public class GetThumbprint {
+public final class SSL {
 
 	public static Thumbprints getTumbprints(String sURL) {
 		try {
@@ -33,6 +33,7 @@ public class GetThumbprint {
                          thumbprints.Add(md5,  sha1,  sha256, xcert.getIssuerDN().getName(), xcert.getSubjectDN().getName());
                   }
             }
+            conn.disconnect();
             return thumbprints;
             // TODO Auto-generated catch block
 		     } catch (IOException e) {
