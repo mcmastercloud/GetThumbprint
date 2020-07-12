@@ -11,13 +11,24 @@ import java.security.cert.X509Certificate;
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.bind.DatatypeConverter;
 
-import com.mcmaster.aws.oidc.Thumbprints;
+import com.mcmaster.utility.net.objects.Thumbprints;
 
+/**
+ * @author Stephen McMaster
+ *
+ */
 public final class SSL {
 
-	public static Thumbprints getTumbprints(String sURL) {
+	
+	/**
+	 * Returns a Thumbprints object, with all Thumbprints as well as the First and Last Thumbprint in the chain.  The first Thumbprint equates to the Server Certificate, and the last Thumbprint equates to the Root Certificate.
+	 * This function was initially written for to configure the AWS EKS OIDC Provider.  In this case, you would supply the URL (e.g. https://oidc.eks.eu-west-1.amazonaws.com) to this function, and then use the value from Last::sha1 to populate the Thumbrpint for the provider.
+	 * @param url The URL for which to retrieve Thumbprints.  Should include protocol (e.g. https://)
+	 * @return {@link com.mcmaster.utility.net.objects.Thumbprints}
+	 */
+	public static Thumbprints getTumbprints(String url) {
 		try {
-            URL URLToCheck = new URL(sURL);
+            URL URLToCheck = new URL(url);
             Thumbprints thumbprints = new Thumbprints();
             
             HttpsURLConnection conn = (HttpsURLConnection) URLToCheck.openConnection();
@@ -35,13 +46,12 @@ public final class SSL {
             }
             conn.disconnect();
             return thumbprints;
-            // TODO Auto-generated catch block
 		     } catch (IOException e) {
 		            return new Thumbprints("IO Exception: " + e.getMessage());
 		     } catch (CertificateEncodingException e) {
-		    	 return new Thumbprints(e.getStackTrace().toString());
+		    	 return new Thumbprints("Certificate Encoding Exception" + e.getStackTrace().toString());
 		     } catch (NoSuchAlgorithmException e) {
-		    	 return new Thumbprints(e.getStackTrace().toString());
+		    	 return new Thumbprints("NoSuchAlgorithm Exception: " + e.getStackTrace().toString());
 		     }
 	}
 	
