@@ -14,7 +14,7 @@ Rather than simply creating a Lambda function with the requisite code, I have ma
 # Using the Library
 Class com.mcmaster.utility.net.SSL contains function `getThumbprints(url)`.  When supplied with a URL (including the protocol - for example: `https://oidc.eks.eu-west-1.amazonaws.com` ) the function returns the following object (serialised here to JSON):
 
- ```json
+```json
  {
   "thumbprints": [
     {
