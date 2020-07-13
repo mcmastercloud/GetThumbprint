@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mcmaster.utility.net.SSL;
 import com.mcmaster.utility.net.objects.Thumbprints;
 /**
- * @author Stephen McMaster
  * JUnit test cases
+ * @author Stephen McMaster
  */
 public class GetThumbprint {
 

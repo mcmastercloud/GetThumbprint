@@ -2,7 +2,10 @@ package com.mcmaster.utility.net.objects;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+
+import com.mcmaster.utility.net.objects.Thumbprint.CERTIFICATE_STATUS;
 
 /**
  * @author Stephen McMaster
@@ -76,9 +79,12 @@ public final class Thumbprints implements java.io.Serializable {
 	 * @param sha256 SHA256 Thumbprint
 	 * @param issuer Issuer DN
 	 * @param subject Subject DN
+	 * @param status The Status of the certificate
+	 * @param validFrom The date the certificate is valid from
+	 * @param validTo The date the certificate is valid to
 	 */
-	public void Add(String md5, String sha1, String sha256, String issuer, String subject) {
-		this.thumbprints.add(new Thumbprint(sha1, sha256, md5, issuer, subject));
+	public void Add(String md5, String sha1, String sha256, String issuer, String subject, Thumbprint.CERTIFICATE_STATUS status, Date validFrom, Date validTo) {
+		this.thumbprints.add(new Thumbprint(sha1, sha256, md5, issuer, subject, status, validFrom, validTo));
 	}
 
 	/**
@@ -88,6 +94,8 @@ public final class Thumbprints implements java.io.Serializable {
 		return message;
 	}
 
+	
+	
 	/**
 	 * @return True when the retrieval of Thumbprints was successful, otherwise false.
 	 */

@@ -1,8 +1,8 @@
 package com.mcmaster.aws.lambda.thumbprint;
 
 /**
- * @author Stephen McMaster
  * This class is the Payload Object for Lambda
+ * @author Stephen McMaster
  */
 public final class ThumbprintPayload {
 

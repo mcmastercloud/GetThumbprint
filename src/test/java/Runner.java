@@ -4,13 +4,13 @@ import com.mcmaster.utility.net.SSL;
 import com.mcmaster.utility.net.objects.Thumbprints;
 
 /**
- * @author Stephen McMaster
  * Public class to test execution, and show the output generated
+ * @author Stephen McMaster
  */
 public class Runner {
 
 	/**
-	 * Directly executable function
+	 * Directly executable function that should return the Thumbprints for AWS' EKS OIDC Endpoint in Ireland.
 	 * @param args Default arguments -- not used.
 	 */
 	public static void main(String[] args) {
