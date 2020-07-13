@@ -14,7 +14,7 @@ Rather than simply creating a Lambda function with the requisite code, I have ma
 # Using the Library
 Class com.mcmaster.utility.net.SSL contains function <code>getThumbprints(url)</code>.  When supplied with a URL (including the protocol - for example: <code>https://oidc.eks.eu-west-1.amazonaws.com</code>) the function returns the following object (serialised here to JSON):
 
- ````json
+ <code>
  {
   "thumbprints": [
     {
@@ -88,7 +88,7 @@ Class com.mcmaster.utility.net.SSL contains function <code>getThumbprints(url)</
   },
   "count": 4
 }
-````
+</code>
 
 ### Thumbprint Object
 A <strong>thumbprint</strong> object is always in the following structure:
