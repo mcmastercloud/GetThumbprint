@@ -88,7 +88,6 @@ Class com.mcmaster.utility.net.SSL contains function `getThumbprints(url)`.  Whe
   },
   "count": 4
 }
-</code>
 ```
 
 ### Thumbprint Object
