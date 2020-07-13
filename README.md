@@ -107,6 +107,7 @@ A **thumbprint** object is always in the following structure:
 }
 ```
 
+The following table describes all of the properties of a Thumbprint object.
 
 | Property | Description | Data Type |
 | ---- | --- | --- |
@@ -122,7 +123,7 @@ A **thumbprint** object is always in the following structure:
 
 ###  Thumbprints Class
 
-getThumbprints(url) returns the Thumbprints class, which is described below:
+`getThumbprints(url)` returns the Thumbprints class, which is described below:
  
 | Property | Description | Data Type |
 | ---- | --- | --- |
