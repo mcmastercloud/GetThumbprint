@@ -9,12 +9,12 @@ I first set about creating a Lambda using Python and the pyOpenSSL library.  How
 
 Rather than simply creating a Lambda function with the requisite code, I have made the Thumbprint code generic and simply call that code from the Lambda Handler.
 
-<strong>Note: </strong>JavaDoc has been included as part of this project for full reference.
+**Note: **JavaDoc has been included as part of this project for full reference.
 
 # Using the Library
-Class com.mcmaster.utility.net.SSL contains function <code>getThumbprints(url)</code>.  When supplied with a URL (including the protocol - for example: <code>https://oidc.eks.eu-west-1.amazonaws.com</code>) the function returns the following object (serialised here to JSON):
+Class com.mcmaster.utility.net.SSL contains function `getThumbprints(url)`.  When supplied with a URL (including the protocol - for example: `https://oidc.eks.eu-west-1.amazonaws.com` ) the function returns the following object (serialised here to JSON):
 
- <code>
+ ```json
  {
   "thumbprints": [
     {
@@ -89,9 +89,10 @@ Class com.mcmaster.utility.net.SSL contains function <code>getThumbprints(url)</
   "count": 4
 }
 </code>
+```
 
 ### Thumbprint Object
-A <strong>thumbprint</strong> object is always in the following structure:
+A **thumbprint** object is always in the following structure:
 
 ```json
 {
@@ -105,7 +106,7 @@ A <strong>thumbprint</strong> object is always in the following structure:
       "status": "CURRENT",
       "valid": true
 }
-````
+```
 
 
 | Property | Description | Data Type |
@@ -136,18 +137,18 @@ getThumbprints(url) returns the Thumbprints class, which is described below:
 ## Using with AWS Lambda
 
 1. This project contains a pre-zipped file that is ready to run with Lambda [GetThumbprint-1.0.0.jar](https://bitbucket.org/StephenMcMaster/getthumbprint/src/master/target/GetThumbprint-1.0.0.jar)  Please see here for the .zip file.  Use this Zip file in your Lambda as the source
-2. Set the Lambda Handler name to <code>com.mcmaster.aws.lambda.thumbprint.GetThumbprintHandler::handleRequest</code>
-3. Make sure your runtime is set to <code>Java 11</code>
+2. Set the Lambda Handler name to `com.mcmaster.aws.lambda.thumbprint.GetThumbprintHandler::handleRequest`
+3. Make sure your runtime is set to `Java 11`
 4. You can execute the Lambda by supplying the following as a Test message:
 
-````json
+```json
 {
 	url: "https://oidc.eks.eu-west-1.amazonaws.com"
 }
-````
+```
 
 <strong>Note: </strong>If you are running your Lambda in a VPC, you will need to make sure you have outbound internet access.
 
 ## Using in your own Project
-Import the reference: <code>com.mcmaster.utility.net.SSL</code> and call the <code>getThumbprints(url)</code> function from the SSL class.
+Import the reference: `com.mcmaster.utility.net.SSL` and call the `getThumbprints(url)` function from the SSL class.
 
