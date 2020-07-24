@@ -2,26 +2,19 @@ package com.mcmaster.utility.net.objects;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public final class Thumbprint implements java.io.Serializable  {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5078491230745004863L;
+	
 	private String sha1;
 	private String sha256;
 	private String md5;
 	private String issuerDN;
 	private String subjectDN;
-	
-	@JsonFormat
-    (shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd hh:mm:ss")
 	private Date validFrom;
-	
-	@JsonFormat
-    (shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd hh:mm:ss")
 	private Date validTo;
 	private CERTIFICATE_STATUS status;
 	
@@ -38,7 +31,7 @@ public final class Thumbprint implements java.io.Serializable  {
 		 * The certificate has expired - validTo is in the past.
 		 */
 		EXPIRED,
-		/**
+		/*
 		 * The certificate is current - Today is between validFrom and validTo.
 		 */
 		CURRENT

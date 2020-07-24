@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import com.mcmaster.utility.net.objects.Thumbprint.CERTIFICATE_STATUS;
-
 /**
  * @author Stephen McMaster
  *

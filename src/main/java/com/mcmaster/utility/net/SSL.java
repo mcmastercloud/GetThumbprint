@@ -1,6 +1,8 @@
 package com.mcmaster.utility.net;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -31,12 +33,22 @@ public final class SSL {
 	 * @param url The URL for which to retrieve Thumbprints.  Should include protocol (e.g. https://)
 	 * @return {@link com.mcmaster.utility.net.objects.Thumbprints}
 	 */
-	public static Thumbprints getTumbprints(String url) {
+	public static Thumbprints getTumbprints(String url, String proxyServer, int proxyPort) {
 		try {
             URL URLToCheck = new URL(url);
             Thumbprints thumbprints = new Thumbprints();
+            HttpsURLConnection conn;
             
-            HttpsURLConnection conn = (HttpsURLConnection) URLToCheck.openConnection();
+            if(proxyServer.equals("")) {
+            	System.out.println("Ignoring Proxy Server");
+            	conn = (HttpsURLConnection)URLToCheck.openConnection();	
+            } else {
+            	System.out.println("Setting Proxy Server");
+            	InetSocketAddress proxyInet = new InetSocketAddress(proxyServer, proxyPort);
+            	Proxy proxy = new Proxy(Proxy.Type.HTTP, proxyInet);
+            	conn = (HttpsURLConnection)URLToCheck.openConnection(proxy);
+            }
+            
             conn.connect();
             Certificate[] certs = conn.getServerCertificates();
             for(Certificate cert : certs) {
@@ -52,7 +64,7 @@ public final class SSL {
 							// TODO Auto-generated catch block
 							status = Thumbprint.CERTIFICATE_STATUS.NOT_YET_VALID;
 						 }
-                         
+        
                          Date validFrom = xcert.getNotBefore();
                          Date validTo = xcert.getNotAfter();
                          String sha1 = DatatypeConverter.printHexBinary(MessageDigest.getInstance("SHA-1").digest(cert.getEncoded())).toLowerCase();
